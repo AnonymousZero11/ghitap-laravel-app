@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\EncounterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +31,10 @@ Route::get('/posts', function () {
 
 Route::get('/departments', [DepartmentController::class, 'index']);
 Route::get('/patients', [PatientController::class, 'index']);
+
+Route::prefix('/encounters')->controller(EncounterController::class)->group(function (){
+    Route::get('/', 'index');
+    Route::post('/', 'store');
+});
+
+
