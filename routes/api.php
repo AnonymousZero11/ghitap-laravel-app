@@ -13,3 +13,5 @@ Route::middleware('api-key')->group(function () {
         Route::post('/', [EncounterController::class, 'store']);
     });
 });
+
+Route::get('/users/{uid}', [App\Http\Controllers\UserController::class, 'check']);
